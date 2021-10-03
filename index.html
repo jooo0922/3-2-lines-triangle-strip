@@ -6,8 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Listing 3-2, Lines, Triangles and Triangle Strip</title>
 
-    <script id="shader-vs" type="x-shader/x-vertex"></script>
-    <script id="shader-fs" type="x-shader/x-fragment"></script>
+    <script id="shader-vs" type="x-shader/x-vertex">
+      attribute vec3 aVertexPosition;
+      attribute vec4 aVertexColor;
+      varying vec4 vColor;
+
+      void main() {
+        vColor = aVertexColor;
+        gl_Position = vec4(aVertexPosition, 1.0);
+      }
+    </script>
+
+    <script id="shader-fs" type="x-shader/x-fragment">
+      precision mediump float;
+
+      varying vec4 vColor;
+      void main() {
+        gl_FragColor = vColor;
+      }
+    </script>
 
     <script src="./app.js" defer></script>
     <script src="./webgl-debug.js" defer></script>
