@@ -296,7 +296,7 @@ function draw() {
     0, // WebGLBuffer에서 끼워넣은 버텍스 데이터를 사용하지 않았다면 5번째 인자는 무조건 0으로 때려주면 됨.
     0
   ); // aVertexPosition 애트리뷰트가 hexagon의 WebGLBuffer에서 버텍스 데이터를 어떻게 가져올 건지 방법을 정해줌. p.167 참고.
-  gl.drawArrays(gl.LINE_STRIP, 0, hexagonVertexBuffer.numberOfItems); // hexagon 모양의 연속선을 그려줌. -> 색깔은 각 버텍스에 동일하게 지정된 black 컬러로 나올거임.
+  // gl.drawArrays(gl.LINE_STRIP, 0, hexagonVertexBuffer.numberOfItems); // hexagon 모양의 연속선을 그려줌. -> 색깔은 각 버텍스에 동일하게 지정된 black 컬러로 나올거임.
 
   // 독립삼각형 그리기 (structure of arrays 방식으로)
   // 위에서 hexagon을 그릴 때 상수 버텍스 데이터를 쓰려고 shaderProgram.vertexColorAttribute을 비활성화했는데,
@@ -348,8 +348,8 @@ function draw() {
   // 위에서 삼각형 스트립 그릴 때 사용한 스트립 WebGLBuffer와, 그것을 가져오는 방법을 그대로 사용하되,
   // 각 버텍스들에 쏴줄 상수 버텍스 데이터만 변경해주는거임. 삼각형 스트립 색상이랑 구분선 색상을 다르게 해주려는 것.
   gl.vertexAttrib4f(shaderProgram.vertexColorAttribute, 0.0, 0.0, 0.0, 1.0); // 따라서 aVertexColor 애트리뷰트에 쏴줄 상수 색상 데이터만 다시 지정해주면 됨.
-  gl.drawArrays(gl.LINE_STRIP, 0, 11); // 첫번째 스트립 구분선을 그림 -> 첫번째 버텍스(0)부터 11개의 버텍스까지(10) 사용해서 그리겠다는 뜻.
-  gl.drawArrays(gl.LINE_STRIP, 11, 11); // 두번째 스트립 구분선을 그림 -> 12번째 버텍스(11)부터 11개의 버텍스까지(21)를 사용해서 그리겠다는 뜻.
+  // gl.drawArrays(gl.LINE_STRIP, 0, 11); // 첫번째 스트립 구분선을 그림 -> 첫번째 버텍스(0)부터 11개의 버텍스까지(10) 사용해서 그리겠다는 뜻.
+  // gl.drawArrays(gl.LINE_STRIP, 11, 11); // 두번째 스트립 구분선을 그림 -> 12번째 버텍스(11)부터 11개의 버텍스까지(21)를 사용해서 그리겠다는 뜻.
 }
 
 function startup() {
