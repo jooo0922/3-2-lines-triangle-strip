@@ -265,7 +265,7 @@ function setupBuffers() {
   const indices = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
     // 여기서부터
-    10, 10, 11,
+    10, 11,
     // 여기까지가 겹침삼각형을 위한 여분의 인덱스 -> 이 겹침삼각형들 덕분에 삼각형 스트립들이 분리되고, 사용된 겹침삼각형들은 GPU가 감지하여 제거.
     11,
     12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -275,7 +275,7 @@ function setupBuffers() {
     new Uint16Array(indices), // 인덱스값은 0 이상의 부호가 없는 정수로 표현되니까 해당 뷰 타입을 생성해줘야 겠지
     gl.STATIC_DRAW
   );
-  stripElementBuffer.numberOfItems = 25; // gl.drawElements() 에서 사용할 총 인덱스 개수(겹침삼각형에 필요한 여분 인덱스 3개까지 합해서 25개임)
+  stripElementBuffer.numberOfItems = 24; // 겹침삼각형에 필요한 여분 인덱스를 1개 줄여서 사용했더니 두번째 삼각형 스트립이 사라졌음.
 }
 
 function draw() {
